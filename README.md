@@ -128,6 +128,8 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - Dependencies : zlib bzip2 xz zstd
 - Usage : Compressed archive management library.
 - Notes : On Windows, you need to add "PATHS LIBS_ROOT" inside find_package() functions in the CMakeLists.txt before compiling.
+- Warning : On Windows, zstd support has been disabled.
+
 
 ## libzmq (ZeroMQ) 
 [master, 622fc6dde99ee172ebaa9c8628d85a7a1995a21d]
@@ -187,7 +189,8 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - Dependencies : None
 - Usage : Compression library.
 - Notes : This version build the static and the shared libraries, beware when linking.
-
+- Warning : On Windows, this lib is disabled.
+- 
 # Upcoming libraries
 
 - libsvg (https://github.com/ravhed/libsvg.git)

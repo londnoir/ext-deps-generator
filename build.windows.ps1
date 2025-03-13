@@ -1,3 +1,7 @@
+# Stop the script when a cmdlet or a native command fails
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+
 if ($args.Count -lt 1) {
     $ARCH = "x86_64"
 } else {
@@ -28,7 +32,8 @@ Write-Host "\n======================== Building dependencies for 'windows.$ARCH-
 & ./scripts/windows/build.zlib.ps1 ${ARCH} ${BUILD_TYPE}
 & ./scripts/windows/build.bzip2.ps1 ${ARCH} ${BUILD_TYPE}
 & ./scripts/windows/build.xz.ps1 ${ARCH} ${BUILD_TYPE}
-& ./scripts/windows/build.zstd.ps1 ${ARCH} ${BUILD_TYPE}
+#& ./scripts/windows/build.pthread-win32.ps1 ${ARCH} ${BUILD_TYPE} # Requested for zstd
+#& ./scripts/windows/build.zstd.ps1 ${ARCH} ${BUILD_TYPE} # Fails with pthread, unable to disable MT
 & ./scripts/windows/build.brotli.ps1 ${ARCH} ${BUILD_TYPE}
 & ./scripts/windows/build.harfbuzz.ps1 ${ARCH} ${BUILD_TYPE}
 & ./scripts/windows/build.libjpeg-turbo.ps1 ${ARCH} ${BUILD_TYPE}

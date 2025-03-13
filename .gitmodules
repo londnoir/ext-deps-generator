@@ -61,3 +61,6 @@
 [submodule "repositories/cppzmq"]
 	path = repositories/cppzmq
 	url = https://github.com/zeromq/cppzmq.git
+[submodule "repositories/pthread-win32"]
+	path = repositories/pthread-win32
+	url = https://github.com/GerHobbelt/pthread-win32.git

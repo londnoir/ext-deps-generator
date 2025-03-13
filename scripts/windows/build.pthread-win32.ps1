@@ -7,11 +7,11 @@ if ($args.Count -lt 2 -or [string]::IsNullOrEmpty($args[0]) -or [string]::IsNull
 	exit 1
 }
 
-$LIB_NAME = "clipper2"
+$LIB_NAME = "pthread-win32"
 $PLATFORM = "windows." + $args[0]
 $BUILD_TYPE = $args[1]
 
-$SOURCE_DIR = "./repositories/$LIB_NAME/CPP"
+$SOURCE_DIR = "./repositories/$LIB_NAME"
 $BUILD_DIR = "./builds/$PLATFORM-$BUILD_TYPE/$LIB_NAME"
 $INSTALL_DIR = "./output/$PLATFORM-$BUILD_TYPE"
 
@@ -27,13 +27,8 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR -G "Visual Studio 17 2022" -A x64 `
 -DCMAKE_BUILD_TYPE="$BUILD_TYPE" `
 -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR" `
 -DCMAKE_MSVC_RUNTIME_LIBRARY="$MSVC_RUNTIME" `
--DCLIPPER2_UTILS=On `
--DCLIPPER2_EXAMPLES=Off `
--DCLIPPER2_TESTS=Off `
--DUSE_EXTERNAL_GTEST=Off `
--DUSE_EXTERNAL_GBENCHMARK=Off `
 -DBUILD_SHARED_LIBS=Off `
--DCLIPPER2_USINGZ=Off
+-DBUILD_TESTING=Off
 
 Write-Host "`n======================== Building ... ========================`n"
 

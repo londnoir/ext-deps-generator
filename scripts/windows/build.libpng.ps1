@@ -1,3 +1,7 @@
+# Stop the script when a cmdlet or a native command fails
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+
 if ($args.Count -lt 2 -or [string]::IsNullOrEmpty($args[0]) -or [string]::IsNullOrEmpty($args[1])) {
 	Write-Host "Bad call : BuildScript {x86_64|arm} {Release|Debug}`n"
 	exit 1
@@ -25,7 +29,7 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR -G "Visual Studio 17 2022" -A x64 `
 -DCMAKE_MSVC_RUNTIME_LIBRARY="$MSVC_RUNTIME" `
 -DCMAKE_C_FLAGS_RELEASE="/MT" `
 -DCMAKE_C_FLAGS_DEBUG="/MTd" `
--DZLIB_ROOT="./output/${PLATFORM}-${BUILD_TYPE}" `
+-DZLIB_ROOT="../../output/${PLATFORM}-${BUILD_TYPE}" `
 -DPNG_SHARED=Off `
 -DPNG_STATIC=On `
 -DPNG_TESTS=Off `

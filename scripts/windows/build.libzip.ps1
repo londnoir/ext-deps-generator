@@ -1,3 +1,7 @@
+# Stop the script when a cmdlet or a native command fails
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+
 if ($args.Count -lt 2 -or [string]::IsNullOrEmpty($args[0]) -or [string]::IsNullOrEmpty($args[1])) {
 	Write-Host "Bad call : BuildScript {x86_64|arm} {Release|Debug}`n"
 	exit 1
@@ -32,7 +36,7 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR -G "Visual Studio 17 2022" -A x64 `
 -DENABLE_WINDOWS_CRYPTO=Off `
 -DENABLE_BZIP2=On `
 -DENABLE_LZMA=On `
--DENABLE_ZSTD=On `
+-DENABLE_ZSTD=Off `
 -DENABLE_FDOPEN=Off `
 -DBUILD_TOOLS=On `
 -DBUILD_REGRESS=Off `
@@ -42,6 +46,8 @@ cmake -S $SOURCE_DIR -B $BUILD_DIR -G "Visual Studio 17 2022" -A x64 `
 -DBUILD_SHARED_LIBS=Off `
 -DLIBZIP_DO_INSTALL=On `
 -DSHARED_LIB_VERSIONNING=On 
+
+# NOTE: ZSTD has been deactivated cause of MT and pthread failure
 
 Write-Host "`n======================== Building ... ========================`n"
 
