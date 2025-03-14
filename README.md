@@ -181,7 +181,7 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - Usage : Compression library.
 - Notes : This version build the static and the shared libraries, beware when linking. An upcoming release will fix this with cmake options.
 
-## zstd 
+## zstd (Zstandard)
 [release, f8745da6ff1ad1e7bab384bd1f9d742439278e99]
 
 - URL : https://github.com/facebook/zstd.git
