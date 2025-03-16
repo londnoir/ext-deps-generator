@@ -2,7 +2,7 @@
 
 This repository aims to create a cross-platform archive of static libraries to use with a project easily.
 This must be run on a clean machine to create the archive for a specific platform.
-Currently, Linux (x86_64),  macOS (arm64, x86_64) and Windows (x86_64) are handled.
+Currently, Linux (x86_64), macOS (arm64, x86_64) and Windows (x86_64) are handled.
 
 
 # Updating dependencies
@@ -20,7 +20,7 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - URL : https://github.com/google/brotli.git
 - Version : 1.1.0
 - Dependencies : None
-- Usage : Requested by Freetype.
+- Usage : Lossless compression library (Huffman LZ77). Requested by Freetype.
 
 ## bzip2 
 [master, 1ea1ac188ad4b9cb662e3f8314673c63df95a589]
@@ -68,7 +68,7 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - URL : https://github.com/harfbuzz/harfbuzz.git
 - Version : 10.4.0
 - Dependencies : None
-- Usage : Requested by Freetype
+- Usage : Vector font library. Requested by Freetype
 
 ## hwloc 
 [v2.12, 023d11309beca9c68c7433e8d634f1999e25370c]
@@ -203,11 +203,16 @@ There is three main scripts at the repository to fire all compilations.
 "builds" directory will contain the compilation files.
 "output" directory will contain the final library files to ship.
 
-All platforms needs at least CMake 3.25.1 and Python 3+.
+All platforms needs at least CMake 3.25.1, Python 3+, ninja build and autotools.
 
 ## Linux
 
-Compilations needs GCC 12.
+Compilations needs GCC 12+.
+
+To install autotools
+```bash
+sudo apt install autoconf automake libtool
+```
 
 ```bash
 ./build.linux.sh x86_64 Release
@@ -218,6 +223,16 @@ Compilations needs GCC 12.
 ## macOS
 
 Compilations needs a proper XCode installed for macOS SDK 12.0
+
+To install brew (https://brew.sh/)
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+To install autotools
+```bash
+brew install samurai autoconf automake libtool
+```
 
 For macOS based on 'Apple Silicon CPU' :
 ```bash
