@@ -20,7 +20,7 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - URL : https://github.com/google/brotli.git
 - Version : 1.1.0
 - Dependencies : None
-- Usage : Requested by Freetype.
+- Usage : Lossless compression library (Huffman LZ77). Requested by Freetype.
 
 ## bzip2 
 [master, 1ea1ac188ad4b9cb662e3f8314673c63df95a589]
@@ -68,7 +68,7 @@ When a dependency is updated, do not forget to report in 'Available libraries' t
 - URL : https://github.com/harfbuzz/harfbuzz.git
 - Version : 10.4.0
 - Dependencies : None
-- Usage : Requested by Freetype
+- Usage : Vector font library. Requested by Freetype
 
 ## hwloc 
 [v2.12, 023d11309beca9c68c7433e8d634f1999e25370c]
